@@ -1,0 +1,185 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>distributed_dart Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="favicon.ico">
+        
+        </head>
+        <body data-library="distributed_dart">
+        <div class="page">
+        <div class="header">
+          <a href="index.html"><div class="logo"></div></a>
+          <a href="index.html">Dart Documentation</a>
+         &rsaquo; <a href="distributed_dart.html">distributed_dart</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+<h2><strong>distributed_dart</strong> library</h2>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="logging">
+<button class="show-code">Code</button>
+bool         <strong>logging</strong> <a class="anchor-link"
+            href="#logging"
+            title="Permalink to logging">#</a>
+        </h4>
+        <div class="doc">
+<p>Set to <code>true</code> for enabling debug output from the distributed_dart library.
+Default value is <code>false</code>.</p>
+<pre class="source">
+bool logging = false
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Functions</h3>
+<div class="method"><h4 id="registerNode">
+<button class="show-code">Code</button>
+void <strong>registerNode</strong>(<a href="distributed_dart/NodeAddress.html">NodeAddress</a> node, [bool allowremote = false, String workdir]) <a class="anchor-link" href="#registerNode"
+              title="Permalink to registerNode">#</a></h4>
+<div class="doc">
+<pre class="source">
+void registerNode(NodeAddress node, [bool allowremote=false, String workdir]) {
+ //kregisterNode must not be called more than once
+ if(NodeAddress._localhost != null) {
+   throw new UnsupportedOperationError("Can only register node once");
+ }
+
+ // set local identification
+ NodeAddress._localhost = node;
+ 
+ // set path to where to store received files
+ _workDirPath = (workdir == null) ? _getDefaultWorkDir() : new Path(workdir);
+ 
+ // setup requesthandlers
+ _RequestHandler.allow(_NETWORK_FILE_HANDLER);
+ _RequestHandler.allow(_NETWORK_FILE_REQUEST_HANDLER);
+ _RequestHandler.allow(_NETWORK_ISOLATE_DATA_HANDLER);
+ 
+ if(allowremote){
+   _RequestHandler.allow(_NETWORK_SPAWN_ISOLATE_HANDLER);
+   _RequestHandler.allow(_NETWORK_SPAWN_RESPONSE_HANDLER);
+ }
+ 
+ // start listening for incomming requests
+ _Network._initServer();
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="spawnUriRemote">
+<button class="show-code">Code</button>
+SendPort <strong>spawnUriRemote</strong>(String uri, <a href="distributed_dart/NodeAddress.html">NodeAddress</a> node) <a class="anchor-link" href="#spawnUriRemote"
+              title="Permalink to spawnUriRemote">#</a></h4>
+<div class="doc">
+<pre class="source">
+SendPort spawnUriRemote(String uri, NodeAddress node){
+ var requestId = new _IsolateId();
+ var rp = new ReceivePort();
+ var buffer = new StreamController();
+ rp.receive((msg,reply) =&gt; buffer.sink.add({'msg':msg,'reply':reply}));
+ 
+ _RemoteProxy
+   .subscribe(requestId)
+   .then((_RemoteSendPort rsp){
+     buffer.stream.listen((data){
+       var msg = data['msg'];
+       var sp = data['reply'];
+       var local = new _LocalIsolate(sp);
+       rsp.send(msg, local.toRemoteSendPort());
+     });
+   });
+ 
+ 
+ _DartCodeDb.resolveDartProgram(uri).then((_DartProgram dp){
+   new _spawnIsolateRequest(requestId,dp).sendTo(node);
+ });
+
+ return rp.toSendPort();
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Classes</h3>
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/NodeAddress.html"><strong>NodeAddress</strong></a>
+          </h4>
+          </div>
+          
+</div>
+<div>
+<h3>Exceptions</h3>
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/FileChangedException.html"><strong>FileChangedException</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/FileNotFoundException.html"><strong>FileNotFoundException</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/InvalidWorkDirException.html"><strong>InvalidWorkDirException</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/JsonCyclicError.html"><strong>JsonCyclicError</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/NotSerializableObjectException.html"><strong>NotSerializableObjectException</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/ScannerException.html"><strong>ScannerException</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/UnsupportedOperationError.html"><strong>UnsupportedOperationError</strong></a>
+          </h4>
+          </div>
+          
+          <div class="type">
+          <h4>
+            <a href="distributed_dart/WorkDirInUseException.html"><strong>WorkDirInUseException</strong></a>
+          </h4>
+          </div>
+          
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-06-24 15:16:46.596</div>
+        </div>
+        <script async src="client-live-nav.js"></script>
+        </body></html>
+        

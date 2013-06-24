@@ -1,0 +1,113 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>UnsupportedOperationError class / distributed_dart Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="distributed_dart" data-type="UnsupportedOperationError">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../distributed_dart.html">distributed_dart</a> &rsaquo; <a href="../distributed_dart/UnsupportedOperationError.html">UnsupportedOperationError</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>UnsupportedOperationError</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class UnsupportedOperationError implements Error {
+ final message;
+
+ /** The [message] describes the erroneous argument. */
+ UnsupportedOperationError([this.message]);
+
+ String toString() {
+   if (message != null) {
+     return "Not supported operation: $message";
+   }
+   return "Not supported operation";
+ }
+}
+</pre>
+</div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-exception"></span><a href="../dart_core/Error.html">Error</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="UnsupportedOperationError">
+<button class="show-code">Code</button>
+new <strong>UnsupportedOperationError</strong>([message]) <a class="anchor-link" href="#UnsupportedOperationError"
+              title="Permalink to UnsupportedOperationError.UnsupportedOperationError">#</a></h4>
+<div class="doc">
+<p>The 
+<span class="param">message</span> describes the erroneous argument. </p>
+<pre class="source">
+UnsupportedOperationError([this.message]);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="message">
+<button class="show-code">Code</button>
+final         <strong>message</strong> <a class="anchor-link"
+            href="#message"
+            title="Permalink to UnsupportedOperationError.message">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final message
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to UnsupportedOperationError.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() {
+ if (message != null) {
+   return "Not supported operation: $message";
+ }
+ return "Not supported operation";
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-06-24 15:16:46.651</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
