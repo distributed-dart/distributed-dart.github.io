@@ -3487,7 +3487,9 @@ bu:function(a){return"Unsupported operation: "+this.G1}},rM:{"":"a;G1",
 bu:function(a){var z=this.G1
 return z!=null?"UnimplementedError: "+$.d(z):"UnimplementedError"}},lj:{"":"a;G1",
 bu:function(a){return"Bad state: "+this.G1}},UV:{"":"a;Sd",
-bu:function(a){return"Concurrent modification during iteration: "+$.hl(this.Sd)+"."}},VS:{"":"a;",
+bu:function(a){var z=this.Sd
+if(z==null)return"Concurrent modification during iteration."
+return"Concurrent modification during iteration: "+$.hl(z)+"."}},VS:{"":"a;",
 bu:function(a){return"Stack Overflow"}},t7:{"":"a;Wo",
 bu:function(a){return"Reading static variable '"+this.Wo+"' during its initialization"}},HG:{"":"a;G1",
 bu:function(a){var z=this.G1
@@ -5218,7 +5220,6 @@ $.U13=$.im.prototype
 $.U209=new $.Tc("--")
 $.U68=new $.iT($.U209,14,151)
 $.U11=$.K5.prototype
-$.DAa=$.Q.prototype
 $.U4=$.dX.prototype
 $.U10=new $.Fk("mouseup")
 $.U210=new $.Tc("+")
@@ -5232,6 +5233,7 @@ $.U19=new $.iT($.U190,1,148)
 $.U212=new $.Tc("|")
 $.U213=new $.Tc(".")
 $.U42=new $.iT($.U213,14,46)
+$.DAa=$.Q.prototype
 $.Pda=$.O.prototype
 $.U86=new $.iT($.U207,1,136)
 $.U48=new $.Tc("unterminated string literal")
