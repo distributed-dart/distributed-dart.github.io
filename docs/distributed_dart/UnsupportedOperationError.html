@@ -33,7 +33,7 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class UnsupportedOperationError implements Error {
+class UnsupportedOperationError extends Error {
  final message;
 
  /** The [message] describes the erroneous argument. */
@@ -48,9 +48,9 @@ class UnsupportedOperationError implements Error {
 }
 </pre>
 </div>
-<h3>Implements</h3>
+<h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-exception"></span><a href="../dart_core/Error.html">Error</a></span></p>
+<span class="type-box"><span class="icon-exception"></span><a href="../dart_core/Error.html">Error</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-exception"></span><strong>UnsupportedOperationError</strong></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="UnsupportedOperationError">
@@ -80,6 +80,18 @@ final message
 </pre>
 </div>
 </div>
+<div class="field inherited"><h4 id="stackTrace">
+<button class="show-code">Code</button>
+final StackTrace         <strong>stackTrace</strong> <a class="anchor-link"
+            href="#stackTrace"
+            title="Permalink to UnsupportedOperationError.stackTrace">#</a>
+        </h4>
+        <div class="inherited-from">inherited from Error </div><div class="doc">
+<pre class="source">
+external StackTrace get stackTrace;
+</pre>
+</div>
+</div>
 </div>
 <div>
 <h3>Methods</h3>
@@ -106,7 +118,7 @@ String toString() {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-07-11 14:33:50.605</div>
+          <div>This page was generated at 2013-07-11 20:29:35.300</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
