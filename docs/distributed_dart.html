@@ -62,7 +62,7 @@ void registerNode(NodeAddress node, [bool allowremote=false, String workdir]) {
  NodeAddress._localhost = node;
  
  // set path to where to store received files
- _workDirPath = (workdir == null) ? _getDefaultWorkDir() : new Path(workdir);
+ _workDirPath = (workdir == null) ? _getDefaultWorkDir() : workdir;
  
  // setup requesthandlers
  _RequestHandler.allow(_NETWORK_FILE_HANDLER);
@@ -178,7 +178,7 @@ SendPort spawnUriRemote(String uri, NodeAddress node){
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-07-12 00:18:16.015</div>
+          <div>This page was generated at 2013-08-29 08:43:54.996</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>
