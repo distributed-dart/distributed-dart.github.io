@@ -1,1 +1,1 @@
-{"dependencies":[],"name":"dart:","revision":"0","libraries":[{"refId":"distributed_dart"},{"refId":"path","name":"package:path/path.dart"}],"description":"Dart System Libraries"}
+{"name":"dart:","description":"Dart System Libraries","libraries":[{"refId":"distributed_dart"},{"name":"package:path/path.dart","refId":"path"}],"revision":"0","dependencies":[]}
