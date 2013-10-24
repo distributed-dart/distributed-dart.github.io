@@ -64,8 +64,8 @@ abstract class Style {
  static Style _getPlatformStyle() {
    if (_io == null) return Style.url;
 
-   if (_io.classes[const Symbol('Platform')]
-       .getField(const Symbol('operatingSystem')).reflectee == 'windows') {
+   if (_io.classes[#Platform].getField(#operatingSystem)
+       .reflectee == 'windows') {
      return Style.windows;
    }
 
@@ -400,7 +400,7 @@ String toString() =&gt; name;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 22:33:04.684</div>
+          <div>This page was generated at 2013-10-24 03:45:23.176</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
